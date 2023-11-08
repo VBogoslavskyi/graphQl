@@ -13,4 +13,8 @@ export class AlbumsAPI extends RESTDataSource {
   async getAlbum(id: number) {
     return await this.get(`albums/${id}`);
   }
+
+  async getPhotosByAlbumId(albumId: number) {
+    return await this.get(`photos?albumId=${albumId}`);
+  }
 }

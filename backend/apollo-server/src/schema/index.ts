@@ -5,16 +5,17 @@ export default `#graphql
     subscription: Subscription
   }
 
-  type Album {
-    id: ID!
-    title: String
-  }
-
   type Photo {
     id: ID!
     title: String
     url: String
     thumbnailUrl: String
+  }
+
+  type Album {
+    id: ID!
+    title: String
+    photos: [Photo]
   }
 
   type Post {

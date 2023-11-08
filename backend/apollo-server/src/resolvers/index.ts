@@ -14,6 +14,7 @@ import {
   comments,
   albums,
   album,
+  albumPhotos,
   photo,
   photos,
 } from './queries';
@@ -52,5 +53,8 @@ export default {
   Author: {
     address: authorAddress,
     albums: authorAlbums,
+  },
+  Album: {
+    photos: albumPhotos,
   },
 };

@@ -6,4 +6,8 @@ const album = (album, args, { dataSources }, info) => {
   return dataSources.albumsAPI.getAlbum(args.id);
 };
 
-export { albums, album };
+const albumPhotos = (album, args, { dataSources }, info) => {
+  return dataSources.albumsAPI.getPhotosByAlbumId(album.id);
+};
+
+export { albums, album, albumPhotos };
