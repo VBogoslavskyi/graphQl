@@ -14,6 +14,8 @@ import {
   comments,
   albums,
   album,
+  photo,
+  photos,
 } from './queries';
 
 export default {
@@ -27,6 +29,8 @@ export default {
     authorsByCity,
     albums,
     album,
+    photo,
+    photos,
   },
   Mutation: {
     createPost,

@@ -10,6 +10,13 @@ export default `#graphql
     title: String
   }
 
+  type Photo {
+    id: ID!
+    title: String
+    url: String
+    thumbnailUrl: String
+  }
+
   type Post {
     id: ID!
     title: String
@@ -62,6 +69,8 @@ export default `#graphql
   type Query {
     albums: [Album]
     album(id: Int!): Album
+    photos: [Photo]
+    photo(id: Int!): Photo
     posts: [Post]
     post(id: Int!): Post
     postsPaginated(page: Int = 1, pageSize: Int = 5): PostConnection!
