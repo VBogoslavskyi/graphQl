@@ -5,6 +5,11 @@ export default `#graphql
     subscription: Subscription
   }
 
+  type Album {
+    id: ID!
+    title: String
+  }
+
   type Post {
     id: ID!
     title: String
@@ -54,6 +59,8 @@ export default `#graphql
   }
 
   type Query {
+    albums: [Album]
+    album(id: Int!): Album
     posts: [Post]
     post(id: Int!): Post
     postsPaginated(page: Int = 1, pageSize: Int = 5): PostConnection!
