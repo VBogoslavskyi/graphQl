@@ -7,6 +7,8 @@ import {
   post,
   postAuthor,
   authors,
+  author,
+  authorAlbums,
   authorAddress,
   authorsByCity,
   comments,
@@ -21,6 +23,7 @@ export default {
     postsPaginated,
     comments,
     authors,
+    author,
     authorsByCity,
     albums,
     album,
@@ -44,5 +47,6 @@ export default {
   },
   Author: {
     address: authorAddress,
+    albums: authorAlbums,
   },
 };

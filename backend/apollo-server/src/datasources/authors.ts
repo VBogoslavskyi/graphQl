@@ -13,4 +13,8 @@ export class AuthorsAPI extends RESTDataSource {
   async getAuthorById(id: number) {
     return await this.get(`users/${id}`);
   }
+
+  async getAlbumsByUserId(userId: number) {
+    return await this.get(`albums?userId=${userId}`);
+  }
 }

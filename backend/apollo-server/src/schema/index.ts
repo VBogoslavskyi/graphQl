@@ -42,7 +42,8 @@ export default `#graphql
     name: String
     username: String
     email: String
-    address: Address
+    address: Address,
+    albums: [Album]
   }
 
   type Address {
@@ -66,6 +67,7 @@ export default `#graphql
     postsPaginated(page: Int = 1, pageSize: Int = 5): PostConnection!
     comments: [Comment]
     authors: [Author]
+    author(id: ID!): Author
     authorsByCity(city: City!): [Author]
   }
 
