@@ -15,6 +15,18 @@ export class AlbumsAPI extends RESTDataSource {
   }
 
   async getPhotosByAlbumId(albumId: number) {
-    return await this.get(`photos?albumId=${albumId}`);
+    return await this.get(`albums?albumId=${albumId}`);
+  }
+
+  async createAlbum(createAlbumInput: { title: string }) {
+    return await this.post('albums', createAlbumInput);
+  }
+
+  async updateAlbum(id: number, updateAlbumInput: { title: string }) {
+    return await this.put(`albums/${id}`, updateAlbumInput);
+  }
+
+  async deleteAlbum(id: number) {
+    return await this.delete(`albums/${id}`);
   }
 }
