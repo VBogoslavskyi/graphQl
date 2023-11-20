@@ -15,11 +15,11 @@ export class PhotosAPI extends RESTDataSource {
   }
 
   async createPhoto(createPhotoInput: { title: string; url: string, thumbnailUrl: string }) {
-    return await this.post('photos', createPhotoInput);
+    return await this.post('photos', createPhotoInput as any);
   }
 
   async updatePhoto(id: number, updatePhotoInput: { title: string; url: string, thumbnailUrl: string }) {
-    return await this.put(`photos/${id}`, updatePhotoInput);
+    return await this.put(`photos/${id}`, updatePhotoInput as any);
   }
 
   async deletePhoto(id: number) {

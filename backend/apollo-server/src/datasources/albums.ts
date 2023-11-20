@@ -19,11 +19,11 @@ export class AlbumsAPI extends RESTDataSource {
   }
 
   async createAlbum(createAlbumInput: { title: string }) {
-    return await this.post('albums', createAlbumInput);
+    return await this.post('albums', createAlbumInput as any);
   }
 
   async updateAlbum(id: number, updateAlbumInput: { title: string }) {
-    return await this.put(`albums/${id}`, updateAlbumInput);
+    return await this.put(`albums/${id}`, updateAlbumInput as any);
   }
 
   async deleteAlbum(id: number) {
