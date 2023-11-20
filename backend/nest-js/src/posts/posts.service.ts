@@ -51,7 +51,8 @@ export class PostsService {
     const post = await this.postRepository.findOne({ where: { id } });
     await pubSub.publish('postDeleted', { postDeleted: post });
     await this.commentsService.removeAllByPostId(id);
-
     return this.postRepository.remove(post);
+
+    return Promise.resolve({...post, id})
   }
 }
