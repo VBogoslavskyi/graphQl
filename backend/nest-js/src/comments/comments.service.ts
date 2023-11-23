@@ -25,7 +25,7 @@ export class CommentsService {
     await new Promise((resolve) => {
       setTimeout(() => {
         resolve(null);
-      }, 2000);
+      });
     });
     return this.commentRepository.save({ postId, ...createCommentInput });
   }

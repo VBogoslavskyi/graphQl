@@ -37,7 +37,7 @@ export class PostsService {
     await new Promise((resolve) => {
       setTimeout(() => {
         resolve(null);
-      }, 2000);
+      });
     });
     return this.postRepository.save(createPostInput);
   }
@@ -53,6 +53,6 @@ export class PostsService {
     await this.commentsService.removeAllByPostId(id);
     return this.postRepository.remove(post);
 
-    return Promise.resolve({...post, id})
+    return Promise.resolve({ ...post, id });
   }
 }
