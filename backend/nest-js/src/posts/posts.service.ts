@@ -16,6 +16,10 @@ export class PostsService {
     private readonly commentsService: CommentsService
   ) {}
 
+  async create(createPostInput: CreatePostInput): Promise<Post> {
+    return this.postRepository.save(createPostInput);
+  }
+
   async findAll(): Promise<Post[]> {
     return this.postRepository.find({ order: { id: 'DESC' } });
   }
@@ -31,15 +35,6 @@ export class PostsService {
     const pages = Math.ceil(total / pageSize);
 
     return { data, info: { page, pages, total } };
-  }
-
-  async create(createPostInput: CreatePostInput): Promise<Post> {
-    await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(null);
-      });
-    });
-    return this.postRepository.save(createPostInput);
   }
 
   async update(id, updatePostInput: UpdatePostInput): Promise<Post> {

@@ -24,6 +24,13 @@ input CreateCommentInput {
   name: String
 }
 
+input CreatePhotoInput {
+  albumId: ID!
+  thumbnailUrl: String
+  title: String!
+  url: String
+}
+
 input CreatePostInput {
   body: String
   title: String!
@@ -36,11 +43,22 @@ scalar DateTime
 
 type Mutation {
   createComment(createCommentInput: CreateCommentInput!, postId: ID!): Comment!
+  createPhoto(createPhotoInput: CreatePhotoInput!): PhotoEntity!
   createPost(createPostInput: CreatePostInput!): Post!
   removeComment(id: Int!): Comment!
   removePost(id: Int!): Post!
   updateComment(updateCommentInput: UpdateCommentInput!): Comment!
   updatePost(updatePostInput: UpdatePostInput!): Post!
+}
+
+type PhotoEntity {
+  albumId: ID!
+  createdAt: DateTime!
+  id: ID!
+  thumbnailUrl: String!
+  title: String!
+  updatedAt: DateTime!
+  url: String!
 }
 
 type Post {

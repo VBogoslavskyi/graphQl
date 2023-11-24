@@ -1,16 +1,16 @@
-import { Field, InputType } from '@nestjs/graphql';
+import { Field, ID, InputType } from '@nestjs/graphql';
 
 @InputType()
 export class CreatePhotoInput {
   @Field()
   title: string;
 
-  @Field()
+  @Field({ nullable: true })
   url: string;
 
-  @Field()
+  @Field({ nullable: true })
   thumbnailUrl: string;
 
-  @Field()
-  albumId: string;
+  @Field(() => ID)
+  albumId: number;
 }

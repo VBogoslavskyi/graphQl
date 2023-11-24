@@ -20,7 +20,7 @@ export class PhotoEntity {
   @Column()
   thumbnailUrl: string;
 
-  @Field()
+  @Field(() => ID)
   @Column()
   albumId: number;
 
