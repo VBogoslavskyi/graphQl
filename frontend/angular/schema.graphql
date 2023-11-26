@@ -4,6 +4,12 @@ directive @specifiedBy(
   url: String!
 ) on SCALAR
 
+type AlbumEntity {
+  id: ID!
+  imageUrl: String!
+  title: String!
+}
+
 type Comment {
   body: String
   createdAt: DateTime!
@@ -20,10 +26,22 @@ type ConnectionInfo {
   total: Int!
 }
 
+input CreateAlbumInput {
+  imageUrl: String!
+  title: String!
+}
+
 input CreateCommentInput {
   body: String
   email: String!
   name: String
+}
+
+input CreatePhotoInput {
+  albumId: ID!
+  thumbnailUrl: String
+  title: String!
+  url: String
 }
 
 input CreatePostInput {
@@ -37,12 +55,24 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Mutation {
+  createAlbum(createAlbumInput: CreateAlbumInput!): AlbumEntity!
   createComment(createCommentInput: CreateCommentInput!, postId: ID!): Comment!
+  createPhoto(createPhotoInput: CreatePhotoInput!): PhotoEntity!
   createPost(createPostInput: CreatePostInput!): Post!
   removeComment(id: Int!): Comment!
   removePost(id: Int!): Post!
   updateComment(updateCommentInput: UpdateCommentInput!): Comment!
   updatePost(updatePostInput: UpdatePostInput!): Post!
+}
+
+type PhotoEntity {
+  albumId: ID!
+  createdAt: DateTime!
+  id: ID!
+  thumbnailUrl: String!
+  title: String!
+  updatedAt: DateTime!
+  url: String!
 }
 
 type Post {
