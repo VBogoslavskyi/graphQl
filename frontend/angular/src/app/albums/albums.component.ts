@@ -22,25 +22,25 @@ export class AlbumsComponent implements OnInit, OnDestroy {
 
   createForm = new UntypedFormGroup({
     title: new UntypedFormControl(null, Validators.required),
-    url: new UntypedFormControl(null, Validators.required),
+    imageUrl: new UntypedFormControl(null, Validators.required),
   });
   createFormErrors = {
     title: [],
-    url: [],
+    imageUrl: [],
   };
 
   updateForm = new UntypedFormGroup({
     title: new UntypedFormControl(null, Validators.required),
-    url: new UntypedFormControl(null, Validators.required),
+    imageUrl: new UntypedFormControl(null, Validators.required),
   });
   updateFormErrors = {
     title: [],
-    url: [],
+    imageUrl: [],
   };
 
   private validationMessages: FormValidationMessages = {
     title: { required: 'Field is required' },
-    url: { required: 'Field is required' },
+    imageUrl: { required: 'Field is required' },
   };
   private unsubscribe$ = new Subject<void>();
 
@@ -101,10 +101,10 @@ export class AlbumsComponent implements OnInit, OnDestroy {
     this.createForm.reset();
   }
 
-  showEditModal({ title, url, ...rest }: Album): void {
+  showEditModal({ title, imageUrl, ...rest }: Album): void {
     this.isShownEditModal = true;
-    this.editAlbum = { ...rest, title, url };
-    this.updateForm.setValue({ title, url });
+    this.editAlbum = { ...rest, title, imageUrl };
+    this.updateForm.setValue({ title, imageUrl });
   }
 
   hideEditModal(): void {

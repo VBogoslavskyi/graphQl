@@ -1,12 +1,12 @@
 export interface Album {
   id: number;
   title: string;
-  url: string;
+  imageUrl: string;
 }
 
 export interface AlbumParams {
   title: string;
-  url: string;
+  imageUrl: string;
 }
 
 export interface ConnectionInfo {

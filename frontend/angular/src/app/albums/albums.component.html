@@ -8,7 +8,7 @@
         <p-card [header]="album.title" styleClass="mb-6">
           <div class="flex justify-content-center">
             <p-card (click)="showDetails(album)">
-              <p-image alt="Image" width="250" [preview]="true" [src]="album.url"></p-image>
+              <p-image alt="Image" width="250" [preview]="true" [src]="album.imageUrl"></p-image>
             </p-card>
           </div>
 
@@ -71,15 +71,15 @@
     <span class="p-float-label mt-5">
       <input
         pInputText
-        formControlName="url"
+        formControlName="imageUrl"
         id="create-url"
         aria-describedby="create-url-help"
         class="p-inputtext w-full"
       />
       <label for="create-url">URL</label>
     </span>
-    <small *ngIf="createFormErrors.url.length" id="create-url-help" class="p-error">
-      <span *ngFor="let error of createFormErrors.url">{{ error }}</span>
+    <small *ngIf="createFormErrors.imageUrl.length" id="create-url-help" class="p-error">
+      <span *ngFor="let error of createFormErrors.imageUrl">{{ error }}</span>
     </small>
 
     <div class="flex mt-2">
@@ -124,8 +124,8 @@
       />
       <label for="update-url">URL</label>
     </span>
-    <small *ngIf="updateFormErrors.url.length" id="update-url-help" class="p-error">
-      <span *ngFor="let error of updateFormErrors.url">{{ error }}</span>
+    <small *ngIf="updateFormErrors.imageUrl.length" id="update-url-help" class="p-error">
+      <span *ngFor="let error of updateFormErrors.imageUrl">{{ error }}</span>
     </small>
 
     <div class="flex mt-2">

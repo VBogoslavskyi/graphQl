@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { Album, AlbumParams, ConnectionInfo } from 'src/app/albums/models';
+import { Apollo } from 'apollo-angular';
+import { CREATE_ALBUM } from './graphql/mutation-create-album';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlbumsService {
+  constructor(private apollo: Apollo) {}
   queryAlbumsPaginated(page = 1, pageSize = 10): Observable<{ data: Album[]; info: ConnectionInfo }> {
     // TODO
     return of({
@@ -13,12 +16,12 @@ export class AlbumsService {
         {
           id: 1,
           title: 'quidem molestiae enim',
-          url: 'https://via.placeholder.com/600/92c952',
+          imageUrl: 'https://via.placeholder.com/600/92c952',
         },
         {
           id: 2,
           title: 'sunt qui excepturi placeat culpa',
-          url: 'https://via.placeholder.com/600/24f355',
+          imageUrl: 'https://via.placeholder.com/600/24f355',
         },
       ],
       info: { page: 1, pages: 1, total: 2 },
@@ -31,19 +34,21 @@ export class AlbumsService {
       album: {
         id: 3,
         title: 'qui fuga est a eum',
-        url: 'https://via.placeholder.com/600/56a8c2',
+        imageUrl: 'https://via.placeholder.com/600/56a8c2',
       },
       loading: false,
     });
   }
 
   createAlbum(albumParams: AlbumParams): Observable<Album | undefined> {
-    // TODO
-    return of({
-      id: 3,
-      title: 'qui fuga est a eum',
-      url: 'https://via.placeholder.com/600/56a8c2',
-    });
+    return this.apollo
+      .mutate<{ __typename: string; createAlbum: Album }>({
+        mutation: CREATE_ALBUM,
+        variables: {
+          createAlbum: { ...albumParams },
+        },
+      })
+      .pipe(map(({ data }) => data?.createAlbum));
   }
 
   updateAlbum(id: number, albumParams: AlbumParams): Observable<Album | undefined> {
@@ -51,7 +56,7 @@ export class AlbumsService {
     return of({
       id: 3,
       title: 'qui fuga est a eum',
-      url: 'https://via.placeholder.com/600/56a8c2',
+      imageUrl: 'https://via.placeholder.com/600/56a8c2',
     });
   }
 
@@ -60,7 +65,7 @@ export class AlbumsService {
     return of({
       id: 3,
       title: 'qui fuga est a eum',
-      url: 'https://via.placeholder.com/600/56a8c2',
+      imageUrl: 'https://via.placeholder.com/600/56a8c2',
     });
   }
 }
